@@ -1,0 +1,68 @@
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-light" style="background-color: #DCDCDC;">
+    <div class="container">      
+        <a class="navbar-brand" href="http://127.0.0.1:8000/myapp/"><span style="color: #fe4066; font-weight: bold;">Scrape</span></a>
+        <button class="navbar-toggler" type="submit" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+                <li class="nav-item active">
+                <a class="nav-link" href="http://127.0.0.1:8000/myapp/">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container" >
+
+        <h1 style="text-align: center; margin: 50px;"> Search your item </h1>
+        
+            <div>
+            <form  action = "{% url 'new_search' %}" method="post">
+                {% csrf_token %}
+
+                <!-- search -->
+                <div class="form-group"> 
+                    <input type="text" class="form-control" name="search" placeholder="Type in a name of an item... example : 'Iphone x'" >
+                </div>
+
+                <!-- max and min price -->
+                <div class = "input-group" style="margin-bottom: 10px;">
+                    <input type="text" class="form-control" name="max_price" placeholder="Max price (optional)">
+                    <input type="text" class="form-control"  name="min_price" placeholder="Min price (optional)">
+                </div>
+            
+                
+                <!-- button -->
+                <button class="btn btn-light form-control" style="color: #fe4066;" type="submit" name="submit_search"><span style=" font-weight: bold; font-size: large;">Parcourir</span> </button>
+
+            </form>        
+            </div>
+            
+        
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
+
+</body>
+
+</html>

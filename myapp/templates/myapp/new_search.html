@@ -1,0 +1,48 @@
+{% extends 'myapp/index.html' %}
+
+{% block content %}
+
+  <h2 style="text-align : center;"> Resultats similaires à {{search}}</h2>
+  <div class="row">
+      
+     {% for post_1 in liste_1 %}
+
+      {% if post_1.2 <= max_price and post_1.2 >= min_price %}
+
+        <div class="container" id="containerc">
+          
+            <img style="max-width: 100px; max-height: 100px; margin: 10px;"   src=" {{post_1.3}} " alt= " {{post_1.3}} " style="text-align: center;"/>
+          
+            <a href="{{post_1.4}}" class="card-text" style="color: black;margin-top: auto;margin-bottom: auto;"> <span style="font-size: 15px;">{{post_1.0}}</span><br> {{post_1.1}}<br> {{post_1.5}} </a>
+        
+            <a href="{{post_1.4}}" class="btn btn-primary" style="margin: auto; margin-right: 10px; height: 35px;"> {{post_1.2}} DH</a>
+          
+      
+        </div>
+
+      {% endif %}
+
+    {% endfor %} 
+    
+    {% for post_2 in liste_2 %}
+
+      {% if post_2.2 <= max_price and post_2.2 >= min_price %}
+
+        <div class="container" id="containerc">
+          
+            <img style="max-width: 100px; max-height: 100px; margin: 10px;"   src=" {{post_2.3}} " alt= " {{post.3}} " style="text-align: center;"/>
+          
+            <a href="{{post_2.4}}" class="card-text" style="color: black;margin-top: auto;margin-bottom: auto;"> <b >{{post_2.0}}</b><br> <em>{{post_2.1}}</em> <br> {{post_2.5}}</a>
+        
+            <a href="{{post_2.4}}" class="btn btn-primary" style="margin: auto; margin-right: 10px; height: 35px;"> {{post_2.2}} DH</a>
+          
+      
+        </div>
+        
+      {% endif %}
+
+    {% endfor %} 
+
+  </div>  
+  
+{% endblock content %}
